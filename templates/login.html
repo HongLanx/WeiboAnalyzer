@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      background: url('https://pic2.zhimg.com/v2-cf2d4df0323f7340b4e56b9f9808696e_r.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #login_box {
+      width: 300px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffffff90;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      color: #fff;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      background-image: linear-gradient(to right, #30cfd0, #330867);
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-image: linear-gradient(to right, #330867, #30cfd0);
+    }
+
+    #sign_up {
+      margin-top: 20px;
+    }
+
+    a {
+      color: #b94648;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      padding: 10px;
+      background-color: #f44336;
+      color: white;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="login_box">
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+      <div class="form-group">
+        <label for="username">用户名:</label>
+        <input type="text" name="username" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">密码:</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+      <button type="submit">登录</button>
+    </form>
+    <div id="sign_up">
+      <a href="{{ url_for('register') }}">Register</a>
+    </div>
+  </div>
+</body>
+
+</html>

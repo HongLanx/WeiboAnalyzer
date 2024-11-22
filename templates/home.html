@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body {
+      background: url('https://pic2.zhimg.com/v2-cf2d4df0323f7340b4e56b9f9808696e_r.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #home_box {
+      width: 300px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffffff90;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #b94648;
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      padding: 10px;
+      background-color: #f44336;
+      color: white;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="home_box">
+    <h2>Home</h2>
+    {% if current_user.is_authenticated %}
+    <p>欢迎, {{ current_user.username }}!</p>
+    <a href="{{ url_for('logout') }}">退出</a>
+    {% else %}
+    <p>欢迎!</p>
+    <a href="{{ url_for('login') }}">登录</a>
+    {% endif %}
+  </div>
+</body>
+
+</html>
